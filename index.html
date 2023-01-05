@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Slider</title>
+    <style>
+    *{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+
+        }
+.prev,.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: goldenrod;
+  font-weight: bold;
+  font-size: 60px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+}
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+img{
+    width: 100% ;
+    height: 99.4%;
+}
+    </style>
+</head>
+<body>
+        <!-- <button onclick="mynext()">next</button>
+        <button onclick="myprev()">prev</button> -->
+  <a class="prev" onclick="mynext()">❮</a>
+  <a class="next" onclick="myprev()">❯</a>
+    
+    <script>
+        var sliderarray =["https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+        "https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg",
+        "https://images.ctfassets.net/kdawwlsweh27/2LtummpjO849eQ83yGGiUN/316e62a71020a924f9f663b6ca6b7eda/Fresh_Stock_Content.jpg",
+        "https://images.ctfassets.net/hrltx12pl8hq/a2hkMAaruSQ8haQZ4rBL9/8ff4a6f289b9ca3f4e6474f29793a74a/nature-image-for-website.jpg?fit=fill&w=480&h=320",
+        "https://cdn.eso.org/images/thumb300y/eso1907a.jpg",
+        "https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg"
+    ]
+        var i=0;
+        var imgs=document.createElement("img");
+            document.body.appendChild(imgs)
+            var att=document.createAttribute("src");
+            var height=document.createAttribute("height");
+            height.value="760px"
+            var wid=document.createAttribute("width");
+            wid.value="1525px"
+            document.getElementsByTagName("img")[0].setAttributeNode(wid);
+            document.getElementsByTagName("img")[0].setAttributeNode(height);
+            automatic();
+            function automatic(){
+                imgs.src=sliderarray[i];
+                i++;
+                if(i>sliderarray.length-1){
+                    i=0;
+                }
+                setTimeout(automatic,4000);
+            }
+    function mynext(){
+            if(i>=sliderarray.length){
+                i=0;
+            }
+            imgs.src=sliderarray[i];
+            i++;
+        }
+        function myprev(){
+            if(i<=0){
+                i=sliderarray.length-1;
+            }
+            imgs.src=sliderarray[i];
+            i--;
+        }
+
+    </script>            
+</body>
+</html>
